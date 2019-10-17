@@ -10,6 +10,9 @@ import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
 
+
+    const val YYOUTUBE_VIDEO_ID = "LpizdiLSkvk"
+    const val YOUTUBE_PLAYLIST = "PLXtTjtwnQhgISsviTmKkWO5nOa_-TObnD"
 class YoutubeActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
