@@ -50,7 +50,7 @@ class YoutubeActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListen
         Log.d(TAG, "onInitializationSuccess: youTubePlayer is ${youTubePlayer?.javaClass}")
         Toast.makeText(this, "Initialized Youtube Player successfully", Toast.LENGTH_SHORT).show()
 
-        youTubePlayer?.setPlayerStateChangeListener(playerStrateChangeListener)
+        youTubePlayer?.setPlayerStateChangeListener(playerStateChangeListener)
         youTubePlayer?.setPlaybackEventListener(playbackEventListener)
         if (!wasRestored) {
             youTubePlayer?.cueVideo(YOUTUBE_VIDEO_ID)
@@ -89,6 +89,37 @@ class YoutubeActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListen
 
         override fun onPaused() {
             Toast.makeText(this@YoutubeActivity, "Video has paused", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val playerStateChangeListener = object : YouTubePlayer.PlayerStateChangeListener {
+        override fun onAdStarted() {
+            Toast.makeText(
+                this@YoutubeActivity,
+                "Click Ad now, make the video creator rich!",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        override fun onLoading() {
+        }
+
+        override fun onVideoStarted() {
+            Toast.makeText(this@YoutubeActivity, "Video has started", Toast.LENGTH_SHORT).show()
+        }
+
+        override fun onLoaded(p0: String?) {
+        }
+
+        override fun onVideoEnded() {
+            Toast.makeText(
+                this@YoutubeActivity,
+                "Congratulations! You've completed another video.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        override fun onError(p0: YouTubePlayer.ErrorReason?) {
         }
     }
 }
