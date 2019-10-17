@@ -13,7 +13,7 @@ import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
 
 
-const val YYOUTUBE_VIDEO_ID = "LpizdiLSkvk"
+const val YOUTUBE_VIDEO_ID = "LpizdiLSkvk"
 const val YOUTUBE_PLAYLIST = "PLXtTjtwnQhgISsviTmKkWO5nOa_-TObnD"
 
 class YoutubeActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener {
@@ -50,8 +50,10 @@ class YoutubeActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListen
         Log.d(TAG, "onInitializationSuccess: youTubePlayer is ${youTubePlayer?.javaClass}")
         Toast.makeText(this, "Initialized Youtube Player successfully", Toast.LENGTH_SHORT).show()
 
+        youTubePlayer?.setPlayerStateChangeListener(playerStrateChangeListener)
+        youTubePlayer?.setPlaybackEventListener(playbackEventListener)
         if (!wasRestored) {
-            youTubePlayer?.cueVideo(YYOUTUBE_VIDEO_ID)
+            youTubePlayer?.cueVideo(YOUTUBE_VIDEO_ID)
         }
     }
 
